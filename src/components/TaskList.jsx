@@ -1,15 +1,22 @@
 import TaskItem from './TaskItem';
 
 function TaskList({ tasks, onToggle, onDelete }) {
-  if (tasks.length === 0) {
-    return <p>No tasks yet!</p>
+  if (!tasks || tasks.length === 0) {
+    return <p>No tasks found. Add your first task!</p>;
   }
+
   return (
-    <ul style={{ listStyle: 'none', padding: 0 }}>
-      {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onToggle={onToggle} onDelete={onDelete} />
+    <div>
+      {tasks.map(task => (
+        <TaskItem 
+          key={task.id} 
+          task={task} 
+          onToggle={onToggle} 
+          onDelete={onDelete} 
+        />
       ))}
-    </ul>
-  )
+    </div>
+  );
 }
+
 export default TaskList;
